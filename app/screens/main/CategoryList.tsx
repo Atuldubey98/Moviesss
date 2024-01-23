@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { FlatList, ListRenderItem, StyleSheet, View } from 'react-native';
-import { getCategories } from '../../api/imdb';
-import { Category } from '../../types/Categories';
+import {useEffect, useState} from 'react';
+import {FlatList, ListRenderItem, StyleSheet, View} from 'react-native';
+import {getCategories} from '../../api/imdb';
+import {Category} from '../../types/Categories';
 import CategoryItem from './CategoryItem';
 
 export default function CategoryList() {
@@ -22,14 +22,15 @@ export default function CategoryList() {
   const renderItem: ListRenderItem<Category> = ({item}) => {
     return <CategoryItem item={item} key={item.id} />;
   };
-  return (
+  const loading = status === 'loading';
+  return loading ? null : (
     <View style={styles.categoryList}>
       <FlatList horizontal renderItem={renderItem} data={categories} />
     </View>
   );
 }
 
-const styles = StyleSheet.create({  
+const styles = StyleSheet.create({
   categoryList: {
     paddingVertical: 5,
     borderTopWidth: 2,

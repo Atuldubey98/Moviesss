@@ -1,12 +1,11 @@
-import {SafeAreaView} from 'react-native';
+import { NativeRouter, Route, Routes } from 'react-router-native';
 import Header from './app/Header';
-import {NativeRouter, Route, Routes} from 'react-router-native';
 import MainScreen from './app/screens/main';
 import MovieScreen from './app/screens/movie';
 
 export default function App() {
   return (
-    <SafeAreaView>
+    <>
       <Header />
       <NativeRouter>
         <Routes>
@@ -14,6 +13,6 @@ export default function App() {
           <Route path="/:movieId" element={<MovieScreen />} />
         </Routes>
       </NativeRouter>
-    </SafeAreaView>
+    </>
   );
 }
